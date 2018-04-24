@@ -7,34 +7,33 @@ import moment from 'moment';
 
 import navStyles from '../../styles/navStyles';
 
-class AllQuickLogs extends Component {
+class AllChemAddLogs extends Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
       // title: navigation.state.params.title,
-      title: 'All Quick Logs',
+      title: 'All Chemical Addition Logs',
       ...navStyles
     };
   }
 
   render() {
-    const { loading, allQuickLogs, navigation } = this.props;
+    const { loading, allChemAdds, navigation } = this.props;
     if (loading) return <Spinner color='blue' />;
     return (
       <View>
         <List>
           <FlatList
-            data={allQuickLogs}
+            data={allChemAdds}
             renderItem={({ item }) => {
               return (
                 <ListItem>
                   <Body>
                     <Text
-                      onPress={() => navigation.navigate('SingleQuickLog', {
+                      onPress={() => navigation.navigate('SingleChemAddLog', {
                         id: item.id
                       })}
-                    >{moment(item.completedOn).format('h:mm a on ')}
-                    {moment(item.completedOn).format('MM / DD / YYYY')}</Text>
+                    >{moment(item.completedOn).format('MM / DD / YY')}</Text>
                   </Body>
                   <Right>
                   <Icon name='arrow-forward' />
@@ -50,9 +49,9 @@ class AllQuickLogs extends Component {
   }
 }
 
-const allQuickQuery = gql`
-  query QuickLogsQuery {
-    allQuickLogs(orderBy: completedOn_ASC) {
+const allChemAddQuery = gql`
+  query ChemAddLogsQuery {
+    allChemAdds(orderBy: completedOn_ASC) {
       id
       completedOn
     }
@@ -61,6 +60,6 @@ const allQuickQuery = gql`
 
 // The graphql function can take an object as a second argument
 // We can define props in this object
-export default graphql(allQuickQuery, {
+export default graphql(allChemAddQuery, {
   props: ({ data }) => ({ ...data})
-})(AllQuickLogs);
+})(AllChemAddLogs);

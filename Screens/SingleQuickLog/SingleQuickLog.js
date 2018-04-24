@@ -29,7 +29,9 @@ class SingleQuickLog extends Component {
           </Col>
           <Col>
             <Text>
-              {moment(QuickLog.completedOn).format('MM / DD / YYYY, h:mm')}
+              {moment(QuickLog.completedOn).format('   h:mm a')}
+              {'\n'}
+              {moment(QuickLog.completedOn).format('MM / DD / YYYY')}
             </Text>
           </Col>
         </Row>

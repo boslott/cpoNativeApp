@@ -11,9 +11,11 @@ import ViewLogOpts from './Screens/ViewLogOpts/ViewLogOpts';
 import AllMainCompleteLogs from './Screens/AllMainCompleteLogs/AllMainCompleteLogs';
 import AllWadingCompleteLogs from './Screens/AllWadingCompleteLogs/AllWadingCompleteLogs';
 import AllQuickLogs from './Screens/AllQuickLogs/AllQuickLogs';
+import AllChemAddLogs from './Screens/AllChemAddLogs/AllChemAddLogs'; 
 import SingleMainCompleteLog from './Screens/SingleMainCompleteLog/SingleMainCompleteLog';
 import SingleWadingCompleteLog from './Screens/SingleWadingCompleteLog/SingleWadingCompleteLog';
 import SingleQuickLog from './Screens/SingleQuickLog/SingleQuickLog';
+import SingleChemAddLog from './Screens/SingleChemAddLog/SingleChemAddLog';
 
 const Navigator = StackNavigator ({
   Home: {
@@ -47,6 +49,9 @@ const Navigator = StackNavigator ({
   AllQuickLogs: {
     screen: AllQuickLogs
   },
+  AllChemAddLogs: {
+    screen: AllChemAddLogs
+  },
   SingleMainCompleteLog: {
     screen: SingleMainCompleteLog
   },
@@ -55,6 +60,9 @@ const Navigator = StackNavigator ({
   },
   SingleQuickLog: {
     screen: SingleQuickLog
+  },
+  SingleChemAddLog: {
+    screen: SingleChemAddLog
   }
 });
 
