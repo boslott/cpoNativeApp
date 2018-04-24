@@ -10,8 +10,10 @@ import AddNewQuickLog from './Screens/AddNewQuickLog/AddNewQuickLog';
 import ViewLogOpts from './Screens/ViewLogOpts/ViewLogOpts';
 import AllMainCompleteLogs from './Screens/AllMainCompleteLogs/AllMainCompleteLogs';
 import AllWadingCompleteLogs from './Screens/AllWadingCompleteLogs/AllWadingCompleteLogs';
+import AllQuickLogs from './Screens/AllQuickLogs/AllQuickLogs';
 import SingleMainCompleteLog from './Screens/SingleMainCompleteLog/SingleMainCompleteLog';
 import SingleWadingCompleteLog from './Screens/SingleWadingCompleteLog/SingleWadingCompleteLog';
+import SingleQuickLog from './Screens/SingleQuickLog/SingleQuickLog';
 
 const Navigator = StackNavigator ({
   Home: {
@@ -42,11 +44,17 @@ const Navigator = StackNavigator ({
   AllWadingCompleteLogs: {
     screen: AllWadingCompleteLogs
   },
+  AllQuickLogs: {
+    screen: AllQuickLogs
+  },
   SingleMainCompleteLog: {
     screen: SingleMainCompleteLog
   },
   SingleWadingCompleteLog: {
     screen: SingleWadingCompleteLog
+  },
+  SingleQuickLog: {
+    screen: SingleQuickLog
   }
 });
 
