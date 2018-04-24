@@ -63,6 +63,7 @@ export default class ViewLogOpts extends Component {
           block
           bordered
           style={styles.btn}
+          onPress={() => this.viewLog('AllChemAddLogs')}
         >
           <Text style={styles.btnText}>All Chemical Addition Logs</Text>
         </Button>
