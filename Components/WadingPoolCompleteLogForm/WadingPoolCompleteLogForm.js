@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Form, Item, Input, Label, Button } from 'native-base';
-import { Grid, Row } from 'react-native-easy-grid';
+import { Row } from 'react-native-easy-grid';
 import DatePicker from 'react-native-datepicker';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -188,8 +188,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  Lcol: {
-    width: '40%'
+  Rcol: {
+    width: '60%',
+    marginLeft: '25%'
   },
   dateLabel: {
     marginRight: 50
