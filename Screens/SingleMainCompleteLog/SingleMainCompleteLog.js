@@ -20,7 +20,6 @@ class SingleMainCompleteLog extends Component {
   render() {
     const { loading, MainPoolCompleteLog } = this.props;
     if (loading) return <Spinner color='blue' />;
-    console.log('props2: ', MainPoolCompleteLog.completedOn);
     return (
       <Grid style={styles.grid}>
         <Row style={styles.rowOdd}>
