@@ -267,8 +267,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  Lcol: {
-    width: '40%'
+  Rcol: {
+    width: '60%',
+    marginLeft: '25%'
   },
   dateLabel: {
     marginRight: 50
