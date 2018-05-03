@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Form, Item, Input, Label, Button } from 'native-base';
-import { Grid, Row, Col } from 'react-native-easy-grid';
+import { Row } from 'react-native-easy-grid';
 import DatePicker from 'react-native-datepicker';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -79,7 +79,7 @@ export default class MainPoolCompleteLogForm extends Component {
         <Form style={styles.container}>
           <Row>
             <Item stackedLabel>
-              <Label>Completed By:</Label>
+              <Label>Completed By</Label>
               <Input
                 onChangeText={whoChecked => this.setState({ whoChecked })}
                 defaultValue={this.state.whoChecked}
@@ -93,7 +93,6 @@ export default class MainPoolCompleteLogForm extends Component {
             <DatePicker
               style={styles.Rcol}
               mode='date'
-              // format='MM-DD-YYYY'
               confirmBtnText='Ok'
               cancelBtnText='Cancel'
               date={this.state.completedOn}

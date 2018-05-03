@@ -20,7 +20,6 @@ class SingleWadingCompleteLog extends Component {
   render() {
     const { loading, WadingPoolCompleteLog } = this.props;
     if (loading) return <Spinner color='blue' />;
-    console.log('props2: ', WadingPoolCompleteLog.completedOn);
     return (
       <Grid style={styles.grid}>
         <Row style={styles.rowOdd}>

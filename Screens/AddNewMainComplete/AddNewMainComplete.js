@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { Container, Content } from 'native-base';
+import { Content } from 'native-base';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -56,11 +56,6 @@ class AddNewMainComplete extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
   form: {
     padding: 20
   }
@@ -107,8 +102,8 @@ const newMainPoolCompleteLog = gql`
       waterLevel: $waterLevel,
       whoChecked: $whoChecked
     ) {
-      id
-      completedOn
+        id
+        completedOn
       }
     }
 `;
