@@ -20,7 +20,6 @@ class SingleQuickLog extends Component {
   render() {
     const { loading, QuickLog } = this.props;
     if (loading) return <Spinner color='blue' />;
-    console.log('props2: ', QuickLog.pool);
     return (
       <Grid style={styles.grid}>
         <Row style={styles.rowOdd}>

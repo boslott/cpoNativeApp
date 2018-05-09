@@ -18,13 +18,13 @@ class AllChemAddLogs extends Component {
   }
 
   render() {
-    const { loading, allChemAdds, navigation } = this.props;
+    const { loading, allChemAddLogs, navigation } = this.props;
     if (loading) return <Spinner color='blue' />;
     return (
       <View>
         <List>
           <FlatList
-            data={allChemAdds}
+            data={allChemAddLogs}
             renderItem={({ item }) => {
               return (
                 <ListItem>
@@ -33,7 +33,12 @@ class AllChemAddLogs extends Component {
                       onPress={() => navigation.navigate('SingleChemAddLog', {
                         id: item.id
                       })}
-                    >{moment(item.completedOn).format('MM / DD / YY')}</Text>
+                    >{moment(item.completedOn).format('MM / DD / YY')
+                        + ': '
+                        + item.pool
+                        + ' - ' 
+                        + item.chemName}
+                    </Text>
                   </Body>
                   <Right>
                   <Icon name='arrow-forward' />
@@ -51,9 +56,11 @@ class AllChemAddLogs extends Component {
 
 const allChemAddQuery = gql`
   query ChemAddLogsQuery {
-    allChemAdds(orderBy: completedOn_ASC) {
+    allChemAddLogs(orderBy: completedOn_ASC) {
       id
       completedOn
+      chemName
+      pool
     }
   }
 `;
