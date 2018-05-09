@@ -18,9 +18,8 @@ class SingleChemAddLog extends Component {
   } 
 
   render() {
-    const { loading, ChemAdd } = this.props;
+    const { loading, ChemAddLog } = this.props;
     if (loading) return <Spinner color='blue' />;
-    console.log('props2: ', this.props);
     return (
       <Grid style={styles.grid}>
         <Row style={styles.rowOdd}>
@@ -29,7 +28,7 @@ class SingleChemAddLog extends Component {
           </Col>
           <Col>
             <Text>
-              {moment(ChemAdd.completedOn).format('MM / DD / YYYY, h:mm')}
+              {moment(ChemAddLog.completedOn).format('MM / DD / YYYY')}
             </Text>
           </Col>
         </Row>
@@ -38,7 +37,7 @@ class SingleChemAddLog extends Component {
             <Text>Completed By:</Text>
           </Col>
           <Col>
-            <Text>{ChemAdd.addedBy}</Text>
+            <Text>{ChemAddLog.addedBy}</Text>
           </Col>
         </Row>
         <Row style={styles.rowOdd}>
@@ -46,21 +45,25 @@ class SingleChemAddLog extends Component {
             <Text>Pool: </Text>
           </Col>
           <Col>
-            <Text>{ChemAdd.pool}</Text>
+            <Text>{ChemAddLog.pool}</Text>
           </Col>
         </Row>
-        {
-          ChemAdd.chemsAdded.map( chem => (
-            <Row key={ChemAdd.chemsAdded.indexOf(chem)} style={styles.rowOdd}>
-              <Col style={styles.col45}>
-                <Text>{chem.name}</Text>
-              </Col>
-              <Col>
-                <Text>{chem.amount + ' ' + chem.unit}</Text>
-              </Col>
-            </Row>
-          ))
-        }
+        <Row style={styles.rowEven}>
+          <Col style={styles.col45}>
+            <Text>chemical Name:</Text>
+          </Col>
+          <Col>
+            <Text>{ChemAddLog.chemName}</Text>
+          </Col>
+        </Row>
+        <Row style={styles.rowOdd}>
+          <Col style={styles.col45}>
+            <Text>Amount:</Text>
+          </Col>
+          <Col>
+            <Text>{ChemAddLog.chemAmount + ' ' + ChemAddLog.chemUnit}</Text>
+          </Col>
+        </Row>
       </Grid>
     );
   }
@@ -70,18 +73,15 @@ class SingleChemAddLog extends Component {
 //  The query takes a paramaeter of ($id) that is of a type (ID) and it is required (!)
 const singleChemAddQuery = gql`
   query singleChemAddLog($id: ID!) {
-    ChemAdd(id: $id) {
+    ChemAddLog(id: $id) {
       id
       addedBy
       completedOn
       createdOn
       pool
-      chemsAdded {
-        id
-        name
-        amount
-        unit
-      }
+      chemName
+      chemAmount
+      chemUnit
     }
   }
 `;

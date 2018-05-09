@@ -48,6 +48,7 @@ export default class AddNewOptions extends Component {
           block
           bordered
           style={styles.btn}
+          onPress={() => this.addNewLog('AddNewMaintenanceLog')}
         >
           <Text style={styles.btnText}>Maintenance Log</Text>
         </Button>
@@ -62,6 +63,7 @@ export default class AddNewOptions extends Component {
           block
           bordered
           style={styles.btn}
+          onPress={() => this.addNewLog('AddNewChemAddLog')}
         >
           <Text style={styles.btnText}>Chemical Addition Log</Text>
         </Button>

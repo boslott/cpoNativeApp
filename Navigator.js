@@ -7,6 +7,7 @@ import AddNewOptions from './Screens/AddNewOptions/AddNewOptions';
 import AddNewMainComplete from './Screens/AddNewMainComplete/AddNewMainComplete';
 import AddNewWadingComplete from './Screens/AddNewWadingComplete/AddNewWadingComplete';
 import AddNewQuickLog from './Screens/AddNewQuickLog/AddNewQuickLog';
+import AddNewChemAddLog from './Screens/AddNewChemAddLog/AddNewChemAddLog';
 import ViewLogOpts from './Screens/ViewLogOpts/ViewLogOpts';
 import AllMainCompleteLogs from './Screens/AllMainCompleteLogs/AllMainCompleteLogs';
 import AllWadingCompleteLogs from './Screens/AllWadingCompleteLogs/AllWadingCompleteLogs';
@@ -34,6 +35,9 @@ const Navigator = StackNavigator ({
   },
   AddNewQuickLog: {
     screen: AddNewQuickLog
+  },
+  AddNewChemAddLog: {
+    screen: AddNewChemAddLog
   },
 
   //  Viewing Screens

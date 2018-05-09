@@ -5,9 +5,9 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import navStyles from '../../styles/navStyles';
-import QuickLogForm from '../../Components/QuickLogForm/QuickLogForm';
+import ChemAddLogForm from '../../Components/ChemAddLogForm/ChemAddLogForm';
 
-class AddNewQuickLog extends Component {
+class AddNewChemAddLog extends Component {
 
   state = {
     loading: false
@@ -16,26 +16,25 @@ class AddNewQuickLog extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       // title: navigation.state.params.title,
-      title: 'Add New Quick Log',
+      title: 'Add New Chemical Addition Log',
       ... navStyles
     };
   }
 
-  newQuickLog = ({ whoChecked, completedOn, completedAt, cac, ch, cya, fac, ph, pool, ta, waterLevel }) => {
-
+  newChemAddLog = ({ completedOn, addedBy, pool, chemName, chemAmount, chemUnit }) => {
+    
     const createdOn = new Date();
-    const { navigation, newQuickLog } = this.props;
+    const { navigation, newChemAddLog } = this.props;
     this.setState({ loading: true });
 
-    newQuickLog({
-      variables: { whoChecked, completedOn, completedAt, createdOn, cac, ch, cya, fac, ph, pool, ta, waterLevel }
+    newChemAddLog({
+      variables: { addedBy, completedOn, createdOn, pool, chemName, chemAmount, chemUnit }
     }).then(() => {
       navigation.goBack();
     }).catch(err => {
       console.log(err);
       this.setState({ loading: false });
-    });
-
+    })
   }
 
   render() {
@@ -48,7 +47,7 @@ class AddNewQuickLog extends Component {
         <ActivityIndicator size='large' />
       ) : (
         <Content style={styles.form}>
-          <QuickLogForm onSubmit={this.newQuickLog} />
+          <ChemAddLogForm onSubmit={this.newChemAddLog} />
         </Content>
       )}
       </ScrollView>
@@ -62,44 +61,35 @@ const styles = StyleSheet.create({
   }
 });
 
-const newQuickLog = gql`
-  mutation newQuickLog(
-    $cac: String,
-    $ch: String,
-    $completedAt: String,
+const newChemAddLog = gql`
+  mutation newChemAddLog(
+    $addedBy: String!,
     $completedOn: DateTime!,
     $createdOn: DateTime,
-    $cya: String,
-    $fac: String,
-    $ph: String,
     $pool: String,
-    $ta: String,
-    $waterLevel: String,
-    $whoChecked: String!
+    $chemName: String,
+    $chemAmount: String,
+    $chemUnit: String,
   ) {
-    createQuickLog (
-      cac: $cac
-      ch: $ch
-      completedAt: $completedAt
-      completedOn: $completedOn
-      createdOn: $createdOn
-      cya: $cya
-      fac: $fac
-      ph: $ph
-      pool: $pool
-      ta: $ta
-      waterLevel: $waterLevel
-      whoChecked: $whoChecked
+    createChemAddLog (
+      addedBy: $addedBy,
+      completedOn: $completedOn,
+      createdOn: $createdOn,
+      pool: $pool,
+      chemName: $chemName,
+      chemAmount: $chemAmount,
+      chemUnit: $chemUnit
     ) {
         id
         completedOn
-      }
+    }
   }
 `;
 
-export default graphql(newQuickLog, {
-  name: 'newQuickLog',
+
+export default graphql(newChemAddLog, {
+  name: 'newChemAddLog',
   options: {
-    refreshQueries: 'allQuickLogs'
+    refreshQueries: 'allChemAddLogs'
   }
-})(AddNewQuickLog);
+})(AddNewChemAddLog);
