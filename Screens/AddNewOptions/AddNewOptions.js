@@ -56,6 +56,7 @@ export default class AddNewOptions extends Component {
           block
           bordered
           style={styles.btn}
+          onPress={() => this.addNewLog('AddNewIncidentLog')}
         >
           <Text style={styles.btnText}>Incident Log</Text>
         </Button>
