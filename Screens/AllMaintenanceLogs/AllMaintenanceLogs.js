@@ -33,7 +33,7 @@ class AllMaintenanceLogs extends Component {
                       onPress={() => navigation.navigate('SingleMaintenanceLog', {
                         id: item.id
                       })}
-                    >{moment(item.completedOn).format('MM / DD / YY')}
+                    >{moment(item.completedOn).format('MM / DD / YY') + ' - ' + item.pool}
                     </Text>
                   </Body>
                   <Right>
@@ -55,6 +55,7 @@ const allMaintenanceLogsQuery = gql`
     allMaintenanceLogs(orderBy: completedOn_ASC) {
       id
       completedOn
+      pool
     }
   }
 `;

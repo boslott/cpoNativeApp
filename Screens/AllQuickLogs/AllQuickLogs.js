@@ -34,7 +34,7 @@ class AllQuickLogs extends Component {
                         id: item.id
                       })}
                     >{moment(item.completedOn).format('h:mm a on ')}
-                    {moment(item.completedOn).format('MM / DD / YYYY')}</Text>
+                    {moment(item.completedOn).format('MM / DD / YYYY') + ' - ' + item.pool}</Text>
                   </Body>
                   <Right>
                   <Icon name='arrow-forward' />
@@ -55,6 +55,7 @@ const allQuickQuery = gql`
     allQuickLogs(orderBy: completedOn_ASC) {
       id
       completedOn
+      pool
     }
   }
 `;

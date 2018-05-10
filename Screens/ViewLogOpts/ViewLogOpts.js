@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Container, Button } from 'native-base';
 
 import navStyles from '../../styles/navStyles';
@@ -20,6 +20,9 @@ export default class ViewLogOpts extends Component {
   render() {
     return (
       <Container style={styles.container}>
+      <View>
+        <Text style={styles.heading}>Choose Log to View:</Text>
+      </View>
         <Button
           block
           bordered
@@ -57,13 +60,6 @@ export default class ViewLogOpts extends Component {
           block
           bordered
           style={styles.btn}
-        >
-          <Text style={styles.btnText}>All Incident Logs</Text>
-        </Button>
-        <Button
-          block
-          bordered
-          style={styles.btn}
           onPress={() => this.viewLog('AllChemAddLogs')}
         >
           <Text style={styles.btnText}>All Chemical Addition Logs</Text>
@@ -78,6 +74,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
+  },
+  heading: {
+    color: '#3D4852',
+    fontSize: 22,
+    textAlign: 'center',
+    marginBottom: 15,
   },
   btn: {
     margin: 15,
