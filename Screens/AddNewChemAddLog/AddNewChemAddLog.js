@@ -82,7 +82,7 @@ const newChemAddLog = gql`
     ) {
         id
         completedOn
-    }
+      }
   }
 `;
 

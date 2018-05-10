@@ -8,17 +8,17 @@ import moment from 'moment';
 
 import navStyles from '../../styles/navStyles';
 
-class SingleChemAddLog extends Component {
+class SingleMaintenanceLog extends Component {
   static navigationOptions =({ navigation }) => {
     return {
-      title: 'Chemical Addition Log',
+      title: 'Maintenance Log',
       // title: navigation.state.params.title,
       ...navStyles
     };
   } 
 
   render() {
-    const { loading, ChemAddLog } = this.props;
+    const { loading, MaintenanceLog } = this.props;
     if (loading) return <Spinner color='blue' />;
     return (
       <Grid style={styles.grid}>
@@ -28,7 +28,7 @@ class SingleChemAddLog extends Component {
           </Col>
           <Col>
             <Text>
-              {moment(ChemAddLog.completedOn).format('MM / DD / YYYY')}
+              {moment(MaintenanceLog.completedOn).format('MM / DD / YYYY')}
             </Text>
           </Col>
         </Row>
@@ -37,7 +37,7 @@ class SingleChemAddLog extends Component {
             <Text>Completed By:</Text>
           </Col>
           <Col>
-            <Text>{ChemAddLog.addedBy}</Text>
+            <Text>{MaintenanceLog.maintenanceBy}</Text>
           </Col>
         </Row>
         <Row style={styles.rowOdd}>
@@ -45,46 +45,63 @@ class SingleChemAddLog extends Component {
             <Text>Pool: </Text>
           </Col>
           <Col>
-            <Text>{ChemAddLog.pool}</Text>
+            <Text>{MaintenanceLog.pool}</Text>
           </Col>
         </Row>
         <Row style={styles.rowEven}>
           <Col style={styles.col45}>
-            <Text>Chemical Name:</Text>
+            <Text>Cleaned Basket</Text>
           </Col>
           <Col>
-            <Text>{ChemAddLog.chemName}</Text>
+            {MaintenanceLog.cleanBasket ? (
+              <Text>Yes</Text>
+            ) : (
+              <Text>No</Text>
+            )}
           </Col>
         </Row>
         <Row style={styles.rowOdd}>
           <Col style={styles.col45}>
-            <Text>Amount:</Text>
+            <Text>Backwash</Text>
           </Col>
           <Col>
-            <Text>{ChemAddLog.chemAmount + ' ' + ChemAddLog.chemUnit}</Text>
+            {MaintenanceLog.backwash ? (
+              <Text>{'Yes - ' + MaintenanceLog.backwashTime + ' mins'}</Text>
+            ) : (
+              <Text>No</Text>
+            )}
+          </Col>
+        </Row>
+        <Row style={styles.rowEven}>
+          <Col style={styles.col45}>
+            <Text>Vacuum</Text>
+          </Col>
+          <Col>
+            {MaintenanceLog.vacuum ? (
+              <Text>Yes</Text>
+            ) : (
+              <Text>No</Text>
+            )}
+          </Col>
+        </Row>
+        <Row style={styles.rowOdd}>
+          <Col style={styles.col45}>
+            <Text>Vacuum Areas</Text>
+          </Col>
+          <Col>
+            {MaintenanceLog.areaWhole ? (
+              <Text>Whole Pool</Text>
+            ) : (
+              MaintenanceLog.areaShallow ? (<Text>Shallow Area</Text>) :
+              MaintenanceLog.areaLanes ? (<Text>Lanes</Text>) :
+              MaintenanceLog.areaDeep ? (<Text>Deep Area</Text>) : ''
+            )}
           </Col>
         </Row>
       </Grid>
     );
   }
 }
-
-//  We define the name of the function and the name of the query
-//  The query takes a paramaeter of ($id) that is of a type (ID) and it is required (!)
-const singleChemAddQuery = gql`
-  query singleChemAddLog($id: ID!) {
-    ChemAddLog(id: $id) {
-      id
-      addedBy
-      completedOn
-      createdOn
-      pool
-      chemName
-      chemAmount
-      chemUnit
-    }
-  }
-`;
 
 const styles = StyleSheet.create({
   grid: {
@@ -115,12 +132,31 @@ const styles = StyleSheet.create({
   }
 });
 
+const singleMaintenanceLogQuery = gql`
+  query singleMaintenanceLog($id: ID!) {
+    MaintenanceLog(id: $id) {
+      id
+      maintenanceBy
+      completedOn
+      createdOn
+      pool
+      cleanBasket
+      backwash
+      backwashTime
+      vacuum
+      areaWhole
+      areaShallow
+      areaLanes
+      areaDeep
+    }
+  }
+`;
 
-export default graphql(singleChemAddQuery, {
+export default graphql(singleMaintenanceLogQuery, {
   props: ({ data }) => ({ ...data }),
   options: ({ navigation }) => ({
     variables: {
       id: navigation.state.params.id
     }
   })
-})(SingleChemAddLog);
+})(SingleMaintenanceLog);

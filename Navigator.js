@@ -8,15 +8,18 @@ import AddNewMainComplete from './Screens/AddNewMainComplete/AddNewMainComplete'
 import AddNewWadingComplete from './Screens/AddNewWadingComplete/AddNewWadingComplete';
 import AddNewQuickLog from './Screens/AddNewQuickLog/AddNewQuickLog';
 import AddNewChemAddLog from './Screens/AddNewChemAddLog/AddNewChemAddLog';
+import AddNewMaintenanceLog from './Screens/AddNewMaintenanceLog/AddNewMaintenanceLog';
 import ViewLogOpts from './Screens/ViewLogOpts/ViewLogOpts';
 import AllMainCompleteLogs from './Screens/AllMainCompleteLogs/AllMainCompleteLogs';
 import AllWadingCompleteLogs from './Screens/AllWadingCompleteLogs/AllWadingCompleteLogs';
 import AllQuickLogs from './Screens/AllQuickLogs/AllQuickLogs';
-import AllChemAddLogs from './Screens/AllChemAddLogs/AllChemAddLogs'; 
+import AllChemAddLogs from './Screens/AllChemAddLogs/AllChemAddLogs';
+import AllMaintenanceLogs from './Screens/AllMaintenanceLogs/AllMaintenanceLogs'; 
 import SingleMainCompleteLog from './Screens/SingleMainCompleteLog/SingleMainCompleteLog';
 import SingleWadingCompleteLog from './Screens/SingleWadingCompleteLog/SingleWadingCompleteLog';
 import SingleQuickLog from './Screens/SingleQuickLog/SingleQuickLog';
 import SingleChemAddLog from './Screens/SingleChemAddLog/SingleChemAddLog';
+import SingleMaintenanceLog from './Screens/SingleMaintenanceLog/SingleMaintenanceLog';
 
 const Navigator = StackNavigator ({
   Home: {
@@ -39,6 +42,9 @@ const Navigator = StackNavigator ({
   AddNewChemAddLog: {
     screen: AddNewChemAddLog
   },
+  AddNewMaintenanceLog: {
+    screen: AddNewMaintenanceLog
+  },
 
   //  Viewing Screens
   ViewLogOpts: {
@@ -56,6 +62,9 @@ const Navigator = StackNavigator ({
   AllChemAddLogs: {
     screen: AllChemAddLogs
   },
+  AllMaintenanceLogs: {
+    screen: AllMaintenanceLogs
+  },
   SingleMainCompleteLog: {
     screen: SingleMainCompleteLog
   },
@@ -67,6 +76,9 @@ const Navigator = StackNavigator ({
   },
   SingleChemAddLog: {
     screen: SingleChemAddLog
+  },
+  SingleMaintenanceLog: {
+    screen: SingleMaintenanceLog
   }
 });
 

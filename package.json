@@ -33,6 +33,7 @@
     "react-native": "0.54.0",
     "react-native-datepicker": "^1.7.1",
     "react-native-easy-grid": "^0.1.17",
+    "react-native-simple-radio-button": "^2.7.1",
     "react-navigation": "^1.5.11"
   }
 }
