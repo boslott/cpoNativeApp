@@ -14,8 +14,8 @@ const radio_props = [
 ];
 
 const radio_props_pool = [
-  { label: 'Main', value: 'main' },
-  { label: 'Wading', value: 'wading' }
+  { label: 'Main', value: 'Main' },
+  { label: 'Wading', value: 'Wading' }
 ]
 
 export default class MaintenanceLogForm extends Component {

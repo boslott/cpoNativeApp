@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     color: '#DE751F',
@@ -73,10 +73,11 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   btn: {
-    margin: 20,
+    margin: 30,
     backgroundColor: '#FFED4A',
   },
   btnText: {
-    color: '#2779BD'
+    color: '#2779BD',
+    fontSize: 20,
   }
 });
